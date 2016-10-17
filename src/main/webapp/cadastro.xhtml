@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>	
+	<link rel="stylesheet" href="resources/css/mobshop.css" />	
+	<link rel="stylesheet" href="resources/css/mobshop1.css" />	
+	<script src="resources/js/jquery-1.11.1.min.js"></script>	
+	<title>Estoque MobShop</title>
+		<script>
+    jQuery(document).ready(function() {
+        var op = #{loginSistemaMB.isOp};
+        var adm = #{loginSistemaMB.isAdm};
+        if(op == false &amp;&amp; adm == false){
+        	window.location='login.jsf';
+        }else if(adm == false){
+        	window.location='login.jsf';
+        }
+    });
+</script>
+</h:head> 
+<h:body styleClass="full" >
+   <div style="width: 100%;height: 10%;">
+   	<div style="float: left;width: 25%;height: 100%" align="center" >
+   		<img src="resources/imagem/mobshop.png" alt="Logo MobShop" style="max-width: 100%;max-height: 100%;height: 79%;padding-top: 2%;padding-bottom: 2%" align="middle"/>
+   	</div>
+   	<div style="float: left;width: 50%;height: 100%" align="center">
+   		<h1>Cadastro de Funcionarios</h1>
+   	</div>
+   	<div style="float: left;width: 25%;height: 100%;text-align: right;" align="right" >
+   		 <h:form> 
+		   	<h:commandLink action="#{loginSistemaMB.logout}">
+			    <h:graphicImage value="/resources/imagem/logout.png" style="width: 50px;padding-top: 6%;padding-right: 10%"/>
+			</h:commandLink>
+		</h:form>
+   	</div>
+   </div>
+   <div style="width: 25%;height: 90%;float: left;" align="center">
+   	<input type="button" class="btn" value="Vendas" style="width: 70%;margin-top: 15%" onclick="window.location='venda.jsf'" />
+   	<br></br>
+   	<br></br>
+   	<input type="button" class="btn" value="Cadasto" style="width: 70%;margin-top: 5%" onclick="window.location='cadastro.jsf'" />
+   </div>
+   <div style="width: 75%;height: 90%;float: left;overflow-y: scroll;">
+		<h:form id="frm" style="margin-top: 5%">
+			<f:ajax event="change" immediate="true" render="@this" >  
+ 			<h:outputText value="Perfil:" />
+			<br></br>
+ 			<h:selectOneMenu value="#{cadastroFuncionarioMB.perfilSelecionado}" styleClass="textbox" style="height: 32px;width: 30%">
+ 				<f:selectItem itemValue="" itemLabel="Selecione um perfil"/>
+ 				<f:selectItems value="#{cadastroFuncionarioMB.perfil}"/>
+ 				<f:ajax event="change" render="@form"> </f:ajax>
+ 			</h:selectOneMenu>
+ 			<br></br>
+ 			<br/>
+			<h:outputText value="Nome Completo:" />
+			<br></br>
+ 			<h:inputText value="#{cadastroFuncionarioMB.nmFuncionario}" style="width: 50%;" styleClass="textbox"/>
+ 			<br></br>
+ 			<br/>
+ 			<h:outputText value="Email:" />
+			<br></br>
+ 			<h:inputText value="#{cadastroFuncionarioMB.email}" style="width: 50%;" styleClass="textbox"/>
+ 			<br></br>
+ 			<br/>
+ 			<h:outputText id="usu" value="Usuario:" rendered="#{cadastroFuncionarioMB.perfilSelecionado eq 3? false : true}"/>
+ 			<h:outputText id="cod" value="Codigo:" rendered="#{cadastroFuncionarioMB.perfilSelecionado eq 3? true : false}"/>
+			<br></br>
+ 			<h:inputText styleClass="textbox" value="#{cadastroFuncionarioMB.usuario}" style="width: 50%;" disabled="#{cadastroFuncionarioMB.perfilSelecionado eq 3? true : false}"/>
+ 			<h:outputText value=" *Campo Preenchido automaticamente!" style="color: red" rendered="#{cadastroFuncionarioMB.perfilSelecionado eq 3? true : false}"/>
+ 			<br></br>
+ 			<br/>
+ 			<h:outputText value="Senha:" />
+			<br></br>
+ 			<h:inputText styleClass="textbox" value="#{cadastroFuncionarioMB.senha}" style="width: 50%;"/>
+ 			<br></br>
+ 			<br/>
+ 			<h:outputText value="Confirma Senha:" />
+			<br></br>
+ 			<h:inputText styleClass="textbox" value="#{cadastroFuncionarioMB.confSenha}" style="width: 50%"/>
+ 			<br/>
+ 			<br/>
+ 			<h:commandButton value="&nbsp;Novo&nbsp;" action="#{cadastroFuncionarioMB.limparFormulario}" styleClass="btn-style"></h:commandButton>
+ 			<h:commandButton value="Gravar" action="#{cadastroFuncionarioMB.cadastrarFuncionario}" styleClass="btn-style" style="margin-left:5%;margin-right: 5%"></h:commandButton>
+ 			<h:commandButton value="Limpar" action="#{cadastroFuncionarioMB.limparFormulario}" styleClass="btn-style" ></h:commandButton>
+ 			</f:ajax>
+		</h:form>
+   </div>
+</h:body>
+</html>

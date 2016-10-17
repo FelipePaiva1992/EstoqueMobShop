@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>	
+	<link rel="stylesheet" href="resources/css/mobshop1.css" />
+	<script src="resources/js/jquery-1.11.1.min.js"></script>	
+	<title>Estoque MobShop</title>
+	<style>
+		#dvLoading
+			{
+			   background:url(resources/jquery/themes/images/ajax-loader.gif) no-repeat center center;
+			   height: 100px;
+			   width: 100px;
+			   position: fixed;
+			   z-index: 1000;
+			   left: 50%;
+			   top: 50%;
+			   margin: -25px 0 0 -25px;
+			}
+	</style>
+	<script>
+	function logar(){
+		$('#dvLoading').show();
+	};
+	</script>
+</h:head> 
+<h:body styleClass="full">
+	<div id="dvLoading" style="display: none;"></div>
+
+	<h:form styleClass="full">
+	<div class="full" style="text-align:center">
+		<div class="logo">
+			<img src="resources/imagem/mobshop.png" style="max-height: 80%"/>
+		</div>
+		<div class="box" align="center" >
+			<table align="center" style="width:100%">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+					<td colspan="2" style="text-align:center"><h:inputText value="#{loginSistemaMB.usuario}" class="textbox"/></td>
+				<tr>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center"><h:inputSecret value="#{loginSistemaMB.senha}" class="textbox"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width:50%;text-align:right"><h:commandButton value="Entrar" action="#{loginSistemaMB.logarSistema}" onclick="logar()" class="btn"/>&nbsp;</td>
+					<td style="width:50%;text-align:left">&nbsp;<input type="reset" value="Limpar" class="btn"/></td>
+				</tr>
+			</table>
+		</div>
+		<div class="footer" align="center">
+			<ul class="line">
+				<li>Copyright &copy; 2014 The Source Inc. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><ul class="pipes">
+				<li><a href="http://thesource.com.br/" class="first">The Source</a></li>
+			</ul></li>
+			</ul>
+			
+		</div>
+	</div>
+	</h:form>  
+</h:body>
+</html>
