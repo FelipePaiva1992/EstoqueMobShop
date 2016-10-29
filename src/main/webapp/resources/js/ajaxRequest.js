@@ -7,7 +7,7 @@
 function ajaxVendasPendentes(){
 	$.ajax({
         type:"GET",
-		url : "http://thesource.com.br/WebServiceMS/rest/endpointVenda/obterUltimasVendas",
+		url : "http://www.code4u.com.br/WebServiceMS/rest/endpointVenda/obterUltimasVendas",
         dataType: "json",                
 		success : function(dataResult) {
 			
@@ -33,7 +33,7 @@ function ajaxVendasPendentes(){
 function ajaxEntregarVenda(idCampoVenda, idVenda){
 	$.ajax({
         type:"GET",
-		url : "http://thesource.com.br/WebServiceMS/rest/endpointVenda/entregarVenda?idVenda=" + idVenda,
+		url : "http://www.code4u.com.br/WebServiceMS/rest/endpointVenda/entregarVenda?idVenda=" + idVenda,
         dataType: "json",                
 		success : function(dataResult) {
 			
@@ -59,7 +59,7 @@ function ajaxLogar(){
 	var vlSenha =  $('#vlSenha').val();
 	$.ajax({
         type:"POST",
-		url : "http://thesource.com.br/WebServiceMS/rest/endpointAcesso/consultaUsuarioSenha",
+		url : "http://www.code4u.com.br/WebServiceMS/rest/endpointAcesso/consultaUsuarioSenha",
 		data: {"nmUsuario":nmUsuario,"vlSenha":vlSenha},
         dataType: "json",                
 		success : function(dataResult) {
@@ -97,11 +97,11 @@ function ajaxCadastraUsuario(){
 	var url;
 	var data;
 	if(perfilAcesso == 3){
-		url = "http://thesource.com.br/WebServiceMS/rest/endpointVendedor/cadastrarVendedor";
+		url = "http://www.code4u.com.br/WebServiceMS/rest/endpointVendedor/cadastrarVendedor";
 		data = {"nmVendedor":nmVendedor,"vlSenha":vlSenha};
 	}else{
 		var idVendedor = $('#cadIdVendedor').val();
-		url = "http://thesource.com.br/WebServiceMS/rest/endpointAcesso/criarUsuarioSistema";
+		url = "http://www.code4u.com.br/WebServiceMS/rest/endpointAcesso/criarUsuarioSistema";
 		data = {"usUsuario":idVendedor,"nmUsuario":nmVendedor,"vlSenha":vlSenha,"idPerfil":perfilAcesso}
 	}
 	$.ajax({
